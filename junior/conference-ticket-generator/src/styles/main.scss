@@ -1,0 +1,24 @@
+@import 'normalize.css';
+@import 'fonts';
+@import 'general';
+@import 'forms';
+
+:root {
+	--white: hsl(0, 0%, 100%);
+	--light300: hsl(252, 6%, 83%);
+	--light500: hsl(245, 15%, 58%);
+	--dark500: hsl(245, 19%, 35%);
+	--dark700: hsl(248, 70%, 10%);
+	--accent300: hsl(7, 88%, 67%);
+	--accent500: hsl(7, 71%, 60%);
+	--gradientText: hsl(7, 86%, 67%),hsl(0, 0%, 100%);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: $font;
+	font-size: $fontSize;
+}

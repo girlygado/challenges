@@ -1,0 +1,130 @@
+.container {
+  background-image: url('src/assets/images/background-mobile.png');
+  width: 100%;
+  height: 100vh;
+  padding: 2rem 1rem 5rem;
+  position: relative;
+  z-index: 0;
+
+  &__line-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: url('src/assets/images/pattern-lines.svg');
+    width: 100%;
+    height: 70%;
+    z-index: -1;
+  }
+
+  &__circle-pattern {
+    position: fixed;
+    top: -10px;
+    left: -30px;
+    background-repeat: no-repeat;
+    background-image: url('src/assets/images/pattern-circle.svg');
+    background-size: contain;
+    width: 150px;
+    height: 150px;
+    z-index: -1;
+
+    &--mid {
+      top: 50%;
+      left: 50%;
+      background-position: center center;
+    }
+  }
+
+  &__squiggly-top-pattern {
+    position: fixed;
+    top: 80px;
+    right: 0;
+    background-repeat: no-repeat;
+    background-image: url('src/assets/images/pattern-squiggly-line-top.svg');
+    background-size: contain;
+    background-position: top right;
+    width: 200px;
+    height: 200px;
+    z-index: -1;
+  }
+
+  &__squiggly-bottom-pattern {
+    content: ' ';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-image: url('src/assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg');
+    background-size: contain;
+    background-position: left bottom;
+    width: 400px;
+    height: 400px;
+    z-index: -1;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero {
+  &__title {
+    font-size: 1.85rem;
+    text-align: center;
+    color: var(--white);
+  }
+
+  &__subtitle {
+    font-size: 1.25rem;
+    text-align: center;
+    color: var(--light300);
+  }
+}
+
+.registration-form {
+  margin-top: 2rem;
+  max-width: 500px;
+  margin: 2rem auto 0;
+
+  &__submit-button {
+    text-align: center;
+    font-family: $fontBold;
+    width: 100%;
+    background-color: var(--accent300);
+    border: 0;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    color: var(--dark700);
+		cursor: pointer;
+		transition: background-color ease-in-out .2s;
+
+		&:hover,
+		&:active {
+			background-color: var(--accent500);
+		}
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .container {
+    background-image: url('src/assets/images/background-desktop.png') !important;
+
+    &__circle-pattern {
+      &--mid {
+        margin-left: 300px;
+      }
+    }
+
+    &__squiggly-top-pattern {
+      width: 400px;
+      height: 400px;
+    }
+
+    &__squiggly-bottom-pattern {
+      background-image: url('src/assets/images/pattern-squiggly-line-bottom-desktop.svg');
+      width: 700px;
+      height: 700px;
+    }
+  }
+}

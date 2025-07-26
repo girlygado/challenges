@@ -7,7 +7,7 @@
 }
 
 .container {
-  background-image: url('src/assets/images/background-mobile.png');
+  background-image: url('/images/background-mobile.png');
   width: 100%;
 	height: 100vh;
   padding: 2rem 1rem 5rem;
@@ -18,7 +18,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-image: url('src/assets/images/pattern-lines.svg');
+    background-image: url('/images/pattern-lines.svg');
     width: 100%;
     height: 70%;
     z-index: -1;
@@ -29,7 +29,7 @@
     top: -10px;
     left: -30px;
     background-repeat: no-repeat;
-    background-image: url('src/assets/images/pattern-circle.svg');
+    background-image: url('/images/pattern-circle.svg');
     background-size: contain;
     width: 150px;
     height: 150px;
@@ -47,7 +47,7 @@
     top: 80px;
     right: 0;
     background-repeat: no-repeat;
-    background-image: url('src/assets/images/pattern-squiggly-line-top.svg');
+    background-image: url('/images/pattern-squiggly-line-top.svg');
     background-size: contain;
     background-position: top right;
     width: 200px;
@@ -61,7 +61,7 @@
     bottom: 0;
     left: 0;
     background-repeat: no-repeat;
-    background-image: url('src/assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg');
+    background-image: url('/images/pattern-squiggly-line-bottom-mobile-tablet.svg');
     background-size: contain;
     background-position: left bottom;
     width: 400px;
@@ -121,7 +121,7 @@
 }
 
 .ticket {
-  background-image: url('src/assets/images/pattern-ticket.svg');
+  background-image: url('/images/pattern-ticket.svg');
   background-size: 100%;
   background-repeat: no-repeat;
   padding: 1rem;
@@ -201,7 +201,7 @@
 
 @media only screen and (min-width: 1024px) {
   .container {
-    background-image: url('src/assets/images/background-desktop.png') !important;
+    background-image: url('/images/background-desktop.png') !important;
 
     &__circle-pattern {
       &--mid {
@@ -215,7 +215,7 @@
     }
 
     &__squiggly-bottom-pattern {
-      background-image: url('src/assets/images/pattern-squiggly-line-bottom-desktop.svg');
+      background-image: url('/images/pattern-squiggly-line-bottom-desktop.svg');
       width: 700px;
       height: 700px;
     }

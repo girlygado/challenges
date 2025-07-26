@@ -1,5 +1,5 @@
-import IconLogo from '../assets/images/logo-full.svg';
-import GithubLogo from '../assets/images/icon-github.svg';
+import IconLogo from '/images/logo-full.svg';
+import GithubLogo from '/images/icon-github.svg';
 import useTicketStore from '../store/useTicketStore';
 import moment from 'moment';
 

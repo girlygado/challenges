@@ -1,19 +1,19 @@
 @font-face {
 	font-family: 'Inconsolata';
 	font-display: swap;
-	src: url('src/assets/fonts/Inconsolata-Regular.ttf');
+	src: url('/fonts/Inconsolata-Regular.ttf');
 }
 
 @font-face {
 	font-family: 'Inconsolata Medium';
 	font-display: swap;
-	src: url('src/assets/fonts/Inconsolata-Medium.ttf');
+	src: url('/fonts/Inconsolata-Medium.ttf');
 }
 
 @font-face {
 	font-family: 'Inconsolata Bold';
 	font-display: swap;
-	src: url('src/assets/fonts/Inconsolata-Bold.ttf');
+	src: url('/fonts/Inconsolata-Bold.ttf');
 }
 
 $font: 'Inconsolata';

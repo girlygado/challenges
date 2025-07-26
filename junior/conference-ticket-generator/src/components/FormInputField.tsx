@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from 'react';
 import { useDropzone, type FileWithPath } from 'react-dropzone';
-import InfoIcon from '../assets/images/icon-info.svg?react';
-import UploadIcon from '../assets/images/icon-upload.svg?react';
+import InfoIcon from '../assets/icons/icon-info.svg?react';
+import UploadIcon from '../assets/icons/icon-upload.svg?react';
 
 interface FileWithPreview extends FileWithPath {
   preview: string;

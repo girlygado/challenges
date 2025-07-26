@@ -1,5 +1,5 @@
 import React from 'react';
-import InfoIcon from '../assets/images/icon-info.svg?react';
+import InfoIcon from '../assets/icons/icon-info.svg?react';
 
 interface FormFieldProps {
   label: string;

@@ -19,6 +19,12 @@
 }
 
 body {
+	// *You can also add multiple background images!
+	// background-image: url('/images/pattern-squiggly-line-bottom-mobile-tablet.svg'), url('/images/pattern-lines.svg'), url('/images/pattern-squiggly-line-top.svg'), url('/images/background-mobile.png');
+  // background-size: 60%, cover, 30%, cover;
+  // background-repeat: no-repeat,repeat, no-repeat, no-repeat;
+  // background-position: bottom -45px left, top, top 10px right, top;
+
 	font-family: $font;
 	font-size: $fontSize;
 }

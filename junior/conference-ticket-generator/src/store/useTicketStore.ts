@@ -25,7 +25,7 @@ interface TicketActions {
 
 type TicketStore = TicketState & TicketActions;
 
-const useTicketStore = create<TicketStore>((set, get) => ({
+const useTicketStore = create<TicketStore>((set) => ({
   isLoading: false,
   isRegistered: false,
   name: '',
@@ -33,12 +33,12 @@ const useTicketStore = create<TicketStore>((set, get) => ({
   string: '',
   username: '',
 
-  setIsLoading: (isLoading: boolean) => set((state) => ({ isLoading })),
-  setIsRegistered: (isRegistered: boolean) => set((state) => ({ isRegistered })),
-  setName: (name: string) => set((state) => ({ name })),
-  setEmail: (email: string) => set((state) => ({ email })),
-  setUsername: (username: string) => set((state) => ({ username })),
-  setAvatar: (avatar: FileWithPreview) => set((state) => ({ avatar })),
+  setIsLoading: (isLoading: boolean) => set(() => ({ isLoading })),
+  setIsRegistered: (isRegistered: boolean) => set(() => ({ isRegistered })),
+  setName: (name: string) => set(() => ({ name })),
+  setEmail: (email: string) => set(() => ({ email })),
+  setUsername: (username: string) => set(() => ({ username })),
+  setAvatar: (avatar: FileWithPreview) => set(() => ({ avatar })),
 }));
 
 export default useTicketStore;

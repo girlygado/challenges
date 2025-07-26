@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { useDropzone, type FileWithPath } from 'react-dropzone';
 import InfoIcon from '../assets/images/icon-info.svg?react';
 import UploadIcon from '../assets/images/icon-upload.svg?react';
@@ -46,12 +46,6 @@ const FormInputField: React.FC<FormInputFieldProps> = ({
     maxFiles: 1,
   });
 
-  useEffect(() => {
-    if (file) {
-      return () => URL.revokeObjectURL(file.preview);
-    }
-  }, [file]);
-
   const onRemoveImage = (e: React.MouseEvent) => {
     e.stopPropagation();
     setFile(null);
@@ -79,9 +73,6 @@ const FormInputField: React.FC<FormInputFieldProps> = ({
                 src={file.preview}
                 className="form-field__avatar__image"
                 alt="Profile Avatar"
-                onLoad={() => {
-                  URL.revokeObjectURL(file.preview);
-                }}
               />
               <div className="form-field__avatar__actions">
                 <button

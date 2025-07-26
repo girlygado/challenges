@@ -1,7 +1,15 @@
+@mixin text-gradient($gradient, $fallback-color) {
+  background-image: $gradient;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: $fallback-color;
+}
+
 .container {
   background-image: url('src/assets/images/background-mobile.png');
   width: 100%;
-  height: 100vh;
+	height: 100vh;
   padding: 2rem 1rem 5rem;
   position: relative;
   z-index: 0;
@@ -60,6 +68,21 @@
     height: 400px;
     z-index: -1;
   }
+
+  &__loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: hsla(248, 70%, 10%, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: var(--accent300);
+    transition: all ease-in-out 0.3s;
+  }
 }
 
 .header {
@@ -73,36 +96,106 @@
     font-size: 1.85rem;
     text-align: center;
     color: var(--white);
+
+    &--highlight {
+      @include text-gradient(linear-gradient(to right, var(--gradientText)), var(--accent300));
+    }
   }
 
   &__subtitle {
     font-size: 1.25rem;
     text-align: center;
     color: var(--light300);
+
+    &--highlight {
+      @include text-gradient(linear-gradient(to right, var(--gradientText)), var(--accent300));
+    }
   }
 }
 
-.registration-form {
-  margin-top: 2rem;
-  max-width: 500px;
-  margin: 2rem auto 0;
+.ticket-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+}
 
-  &__submit-button {
-    text-align: center;
-    font-family: $fontBold;
+.ticket {
+  background-image: url('src/assets/images/pattern-ticket.svg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding: 1rem;
+  width: 400px;
+  height: 190px;
+  display: flex;
+  justify-content: space-between;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    flex: 1;
+  }
+
+  &__side {
+    height: 100%;
+    display: flex;
+    width: 60px;
+    align-items: center;
+
+    &-id {
+      transform: rotate(90deg);
+      color: var(--light500);
+      font-size: 1.5rem;
+    }
+  }
+
+  &__logo {
+    height: 1.75rem;
+  }
+
+  &__event-address {
+    color: var(--light300);
+    font-size: 0.85rem;
+    margin: 0 0 0rem 3rem;
+  }
+
+  &__user-profile {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+  }
+
+  &__user-avatar {
+    margin: 0;
+    width: 50px;
+    height: 50px;
+  }
+
+  &__user-avatar-img {
     width: 100%;
-    background-color: var(--accent300);
-    border: 0;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    color: var(--dark700);
-		cursor: pointer;
-		transition: background-color ease-in-out .2s;
+    height: 100%;
+    border-radius: 0.25rem;
+  }
 
-		&:hover,
-		&:active {
-			background-color: var(--accent500);
-		}
+  &__user-name {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--white);
+  }
+
+  &__user-username {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--light300);
+    display: flex;
+    align-items: center;
+
+    &-icon {
+      width: 1rem;
+      margin-right: 0.25rem;
+    }
   }
 }
 

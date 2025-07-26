@@ -1,25 +1,18 @@
 import React, { useCallback, useEffect, useMemo, useState, type ChangeEvent } from 'react';
 import FormField from './FormField';
 import FormInputField from './FormInputField';
-import type { FileWithPath } from 'react-dropzone';
+import type { FileWithPreview } from '../store/useTicketStore';
+import useTicketStore from '../store/useTicketStore';
 
 type RegisterFormValues = {
   name: string;
   email: string;
   username: string;
-  profile?: File;
 };
 
-type RegisterFormErrors = Partial<{
-  name: string;
-  email: string;
-  username: string;
-  profile?: string;
-}>;
-
-interface FileWithPreview extends FileWithPath {
-	preview: string;
-}
+type RegisterFormErrors = Partial<RegisterFormValues> & {
+  avatar?: string;
+};
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -32,20 +25,23 @@ const RegistrationForm = () => {
     };
   }, []);
 
-	const [file, setFile] = useState<FileWithPreview | null>(null);
+  const [file, setFile] = useState<FileWithPreview | null>(null);
   const [formValues, setFormValues] = useState<RegisterFormValues>(initialFormValues);
   const [errors, setErrors] = useState<RegisterFormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-	useEffect(() => {
-		if (file) {
-			setErrors((prevErrors) => {
-				const newErrors = { ...prevErrors };
-				delete newErrors['profile' as keyof RegisterFormErrors];
-				return newErrors;
-			});
-		}
-	}, [file])
+  const { setName, setEmail, setUsername, setAvatar, setIsLoading, setIsRegistered } =
+    useTicketStore((state) => state);
+
+  useEffect(() => {
+    if (file) {
+      setErrors((prevErrors) => {
+        const newErrors = { ...prevErrors };
+        delete newErrors['avatar' as keyof RegisterFormErrors];
+        return newErrors;
+      });
+    }
+  }, [file]);
 
   const onInputChange = useCallback(
     (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -72,7 +68,6 @@ const RegistrationForm = () => {
     (values: RegisterFormValues): RegisterFormErrors => {
       const newErrors: RegisterFormErrors = {};
 
-      // Required fields
       if (!values.name.trim()) {
         newErrors.name = 'Please enter your full name.';
       }
@@ -87,9 +82,9 @@ const RegistrationForm = () => {
         newErrors.username = 'Username must be at least 3 characters long.';
       }
 
-			if (!file) {
-				newErrors.profile = 'Please upload your avatar.';
-			}
+      if (!file) {
+        newErrors.avatar = 'Please upload your avatar.';
+      }
 
       return newErrors;
     },
@@ -100,42 +95,47 @@ const RegistrationForm = () => {
     (e: React.FormEvent) => {
       e.preventDefault();
       setIsSubmitting(true);
+      setIsLoading(true);
 
       const currentErrors = validateForm(formValues);
       setErrors(currentErrors);
 
       if (Object.keys(currentErrors).length === 0) {
-        try {
-          console.log('Form data submitted:', formValues);
+        const { name, email, username } = formValues;
 
-          alert('Registration successful!');
-          setFormValues(initialFormValues);
-					setFile(null)
-          setErrors({}); // Clear errors
-        } catch (error) {
-          console.error('Submission failed:', error);
-          alert('An error occurred during registration. Please try again.');
-        } finally {
+        setName(name);
+        setEmail(email);
+        setUsername(username);
+        setAvatar(file as FileWithPreview);
+
+        setTimeout(() => {
+					setIsRegistered(true);
+          setIsLoading(false);
           setIsSubmitting(false);
-        }
+
+          setFormValues(initialFormValues);
+          setFile(null);
+          setErrors({});
+        }, 500);
       } else {
         setIsSubmitting(false);
+				setIsLoading(false);
       }
     },
-    [formValues, validateForm, initialFormValues],
+    [formValues, validateForm, initialFormValues, setName, setEmail, setUsername, setAvatar, setIsLoading, setIsRegistered, file],
   );
 
   return (
     <form className="registration-form" onSubmit={onSubmitRegistration}>
-			<FormInputField
-				label="Upload Avatar"
-        name="profile"
-        htmlFor="profile"
+      <FormInputField
+        label="Upload Avatar"
+        name="avatar"
+        htmlFor="avatar"
         onChange={onInputChange}
-				file={file}
-				setFile={setFile}
-				error={errors?.profile}
-				caption='Upload your photo (JPG/PNG)'
+        file={file}
+        setFile={setFile}
+        error={errors?.avatar}
+        caption="Upload your photo (JPG/PNG)"
       />
 
       <FormField
@@ -174,11 +174,7 @@ const RegistrationForm = () => {
         placeholder="@username"
       />
 
-      <button
-        type="submit"
-        className="registration-form__submit-button"
-        disabled={isSubmitting}
-      >
+      <button type="submit" className="registration-form__submit-button" disabled={isSubmitting}>
         Generate My Ticket
       </button>
     </form>

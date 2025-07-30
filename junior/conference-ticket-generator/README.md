@@ -1,6 +1,6 @@
 # Frontend Mentor - Conference ticket generator
 
-This is a solution to the [Recipe page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/conference-ticket-generator-oq5gFIU12w). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+This is a solution to the [Conference ticket generator challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/conference-ticket-generator-oq5gFIU12w). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ### Screenshot
 
@@ -8,7 +8,7 @@ This is a solution to the [Recipe page challenge on Frontend Mentor](https://www
 
 ### Links
 
-- Solution URL: [https://github.com/girlygado/challenges/edit/master/beginner/recipe-page-main](https://github.com/girlygado/challenges/edit/master/junior/conference-ticket-generator/)
+- Solution URL: [https://github.com/girlygado/challenges/edit/master/junior/conference-ticket-generator](https://github.com/girlygado/challenges/edit/master/junior/conference-ticket-generator/)
 - Live Site URL: [https://challenges-lemon.vercel.app/](https://challenges-fufi.vercel.app/)
 
 ### Built with
